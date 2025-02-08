@@ -1,10 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class HighScore : MonoBehaviour {
     static private TextMeshProUGUI _UI_TEXT;
-    static private int _SCORE = 100;
+    static private int _SCORE = 1000;
 
     private TextMeshProUGUI txtCom;
 
