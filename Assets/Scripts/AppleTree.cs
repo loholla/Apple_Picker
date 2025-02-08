@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AppleTree : MonoBehaviour {
     [Header("Inscribed")]
     //Prefab for instantiating apples
     public GameObject applePrefab;
+
+    public GameObject stickPrefab;
 
     // Speed at which the AppleTree moves
     public float speed = 1f;
@@ -19,9 +22,12 @@ public class AppleTree : MonoBehaviour {
     // Seconds between Apples instantiations
     public float appleDropDelay = 1f;
 
+    public ApplePicker APS;
+    public float variableDelay;
     void Start(){
         // Start dropping Apples
         Invoke("DropApple", 2f);
+        variableDelay = appleDropDelay;
     }
 
     void Update(){
@@ -42,9 +48,15 @@ public class AppleTree : MonoBehaviour {
     }
 
     void DropApple() {
-        GameObject apple = Instantiate<GameObject>(applePrefab);
-        apple.transform.position = transform.position;
-        Invoke("DropApple", appleDropDelay);
+        if(Random.value > 0.2f){
+            GameObject apple = Instantiate<GameObject>(applePrefab);
+            apple.transform.position = transform.position;
+        }
+        else {
+            GameObject stick = Instantiate<GameObject>(stickPrefab);
+            stick.transform.position = transform.position;
+        }
+        Invoke("DropApple", variableDelay);
     }
 
     void FixedUpdate() {
@@ -52,5 +64,10 @@ public class AppleTree : MonoBehaviour {
         if (Random.value < changeDirChance) {
             speed *= -1; // Change direction
         }
+    }
+
+    public void speedIncrease(){
+        variableDelay -= 0.1f;
+        speed *= 2f;
     }
 }
