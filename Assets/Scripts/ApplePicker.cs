@@ -5,6 +5,7 @@ using System.Runtime.ExceptionServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ApplePicker : MonoBehaviour {
     [Header("Inscribed")]
@@ -13,6 +14,8 @@ public class ApplePicker : MonoBehaviour {
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
+    public ButtonController buttonScript;
+    public AppleTree ATS;
 
     void Start()
     {
@@ -45,8 +48,8 @@ public class ApplePicker : MonoBehaviour {
         Destroy(basketGO);
 
         if (basketList.Count == 0) {
-            SceneManager.LoadScene("MainMenu");
+            buttonScript.activate();
+            ATS.drop = false;
         }
-    }
-    
+    }  
 }

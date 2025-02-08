@@ -38,7 +38,8 @@ public class Basket : MonoBehaviour {
         else if (collidedWith.CompareTag("Stick")) {
             Destroy(collidedWith);
             ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
-            apScript.DestroyBasket();
+            for(int i = 0; i < 4; i++)
+                apScript.DestroyBasket();
         }
     }
 }

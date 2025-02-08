@@ -24,6 +24,7 @@ public class AppleTree : MonoBehaviour {
 
     public ApplePicker APS;
     public float variableDelay;
+    public bool drop = true;
     void Start(){
         // Start dropping Apples
         Invoke("DropApple", 2f);
@@ -48,15 +49,17 @@ public class AppleTree : MonoBehaviour {
     }
 
     void DropApple() {
-        if(Random.value > 0.2f){
-            GameObject apple = Instantiate<GameObject>(applePrefab);
-            apple.transform.position = transform.position;
+        if(drop){
+            if(Random.value > 0.1f){
+                GameObject apple = Instantiate<GameObject>(applePrefab);
+                apple.transform.position = transform.position;
+            }
+            else {
+                GameObject stick = Instantiate<GameObject>(stickPrefab);
+                stick.transform.position = transform.position;
+            }
+            Invoke("DropApple", variableDelay);
         }
-        else {
-            GameObject stick = Instantiate<GameObject>(stickPrefab);
-            stick.transform.position = transform.position;
-        }
-        Invoke("DropApple", variableDelay);
     }
 
     void FixedUpdate() {
