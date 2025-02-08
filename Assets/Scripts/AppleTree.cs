@@ -67,7 +67,7 @@ public class AppleTree : MonoBehaviour {
     }
 
     public void speedIncrease(){
-        variableDelay -= 0.1f;
+        variableDelay -= 0.2f;
         speed *= 2f;
     }
 }

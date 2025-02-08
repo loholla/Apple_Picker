@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using JetBrains.Annotations;
 
 public class ScoreCounter : MonoBehaviour {
     [Header("Dynamic")]
@@ -24,11 +25,7 @@ public class ScoreCounter : MonoBehaviour {
         uiText.text = "Score: " + score.ToString("#,0");
         switch(score){
             case 2000:
-                roundUpdate();
-                break;
             case 4000:
-                roundUpdate();
-                break;
             case 6000:
                 roundUpdate();
                 break;
